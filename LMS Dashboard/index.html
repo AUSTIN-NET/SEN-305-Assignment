@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMS Dashboard</title>
+    <style>
+      :root {
+        --bg-primary: #f8f9fa;
+        --bg-sidebar: #1e293b;
+        --text-main: #334155;
+        --text-light: #94a3b8;
+        --accent: #6366f1;
+        --accent-hover: #4f46e5;
+        --border: #e2e8f0;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        background-color: var(--bg-primary);
+        color: var(--text-main);
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Sidebar Navigation */
+      aside {
+        width: 260px;
+        background-color: var(--bg-sidebar);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1rem;
+        flex-shrink: 0;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 2.5rem;
+        padding-left: 0.5rem;
+        color: #f1f5f9;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .nav-links a {
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        display: block;
+        transition: all 0.2s;
+      }
+
+      .nav-links a:hover,
+      .nav-links .active a {
+        background-color: var(--accent);
+        color: #ffffff;
+      }
+
+      /* Main Content Container */
+      main {
+        flex-grow: 1;
+        padding: 2rem;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+      }
+
+      @media (max-width: 1024px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .dashboard-header {
+        grid-column: 1 / -1;
+        margin-bottom: 0.5rem;
+      }
+
+      .dashboard-header h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.25rem;
+      }
+
+      /* Video Lesson Area */
+      .video-section {
+        background-color: var(--card-bg);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background-color: #000;
+        margin-bottom: 1rem;
+      }
+
+      .video-container iframe,
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .lesson-info h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .lesson-info p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* Course Progress Trackers & Right Sidebar */
+      .sidebar-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Progress Tracker Styles */
+      .progress-block {
+        margin-bottom: 1.25rem;
+      }
+
+      .progress-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .progress-bar-bg {
+        background-color: var(--border);
+        border-radius: 1rem;
+        height: 8px;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .progress-bar-fill {
+        background-color: var(--accent);
+        height: 100%;
+        border-radius: 1rem;
+      }
+
+      /* Course Syllabus / Content List */
+      .syllabus-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .syllabus-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background-color: var(--bg-primary);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .syllabus-item:hover {
+        background-color: #f1f5f9;
+      }
+
+      .syllabus-item.current {
+        border-color: var(--accent);
+        background-color: #e0e7ff;
+      }
+
+      .syllabus-item input[type="checkbox"] {
+        margin-right: 0.75rem;
+        accent-color: var(--accent);
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+
+      .syllabus-item .duration {
+        margin-left: auto;
+        color: var(--text-light);
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside>
+      <div class="logo">EduStream</div>
+      <ul class="nav-links">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">My Courses</a></li>
+        <li><a href="#">Certificates</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Header -->
+      <header class="dashboard-header">
+        <h1>Welcome Back, Learner!</h1>
+        <p style="color: var(--text-light)">
+          Pick up right where you left off.
+        </p>
+      </header>
+
+      <!-- Left Column: Video & Lesson Info -->
+      <section class="video-section">
+        <div class="video-container">
+          <!-- Using a standard semantic HTML5 video tag placeholders. Swap source for actual video URL. -->
+          <video controls poster="https://unsplash.com">
+            <source src="#" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="lesson-info">
+          <h2>Module 3: Advanced Flexbox layouts & Grid Integration</h2>
+          <p>
+            In this lesson, we explore complex web layouts by combining the
+            alignment power of CSS Flexbox with the structural framework of CSS
+            Grid. We will build a responsive dashboard framework completely from
+            scratch.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right Column: Trackers & Course Content -->
+      <section class="sidebar-right">
+        <!-- Course Progress Trackers -->
+        <div class="card">
+          <h3>Your Learning Progress</h3>
+
+          <div class="progress-block">
+            <div class="progress-info">
+              <span>UI/UX Design Masterclass</span>
+              <span>75%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div class="progress-block">
+            <div class="progress-info">
+              <span>Full-Stack Web Development</span>
+              <span>40%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 40%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Syllabus Playlist -->
+        <div class="card">
+          <h3>Course Content</h3>
+          <ul class="syllabus-list">
+            <li class="syllabus-item">
+              <input type="checkbox" checked disabled />
+              <span>1. Course Introduction</span>
+              <span class="duration">04:12</span>
+            </li>
+            <li class="syllabus-item">
+              <input type="checkbox" checked disabled />
+              <span>2. Basic Semantic Markup</span>
+              <span class="duration">12:45</span>
+            </li>
+            <li class="syllabus-item current">
+              <input type="checkbox" />
+              <strong>3. Advanced Flexbox Layouts</strong>
+              <span class="duration">18:22</span>
+            </li>
+            <li class="syllabus-item">
+              <input type="checkbox" />
+              <span>4. CSS Grid Deep Dive</span>
+              <span class="duration">22:10</span>
+            </li>
+            <li class="syllabus-item">
+              <input type="checkbox" />
+              <span>5. Capstone Project Briefing</span>
+              <span class="duration">08:55</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

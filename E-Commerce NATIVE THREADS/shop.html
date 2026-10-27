@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Native Threads | Shop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="logo"><a href="index.html">NATIVE THREADS</a></h1>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="product details.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="filters">
+        <h2>Filter Products</h2>
+        <form>
+          <fieldset>
+            <legend>Category</legend>
+            <label
+              ><input type="checkbox" name="category" value="men" /> Men</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="women" />
+              Women</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="accessories" />
+              Accessories</label
+            >
+          </fieldset>
+
+          <fieldset>
+            <legend>Price Range</legend>
+            <label for="price">Max Price:</label>
+            <input
+              type="range"
+              id="price"
+              name="price"
+              min="0"
+              max="500"
+              step="50"
+            />
+          </fieldset>
+
+          <fieldset>
+            <legend>Sort By</legend>
+            <select name="sort">
+              <option value="popular">Most Popular</option>
+              <option value="new">Newest</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+            </select>
+          </fieldset>
+
+          <button type="submit" class="btn">Apply Filters</button>
+        </form>
+      </section>
+
+      <section class="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.Et976WvFVVEuYrpY_XVb_AHaHa?w=193&h=193&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Product 1"
+            />
+            <h3>Classic Tee</h3>
+            <p>$40</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.KqfxkZNXZmQ1d76R146ljwHaGh?w=193&h=170&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Product 2"
+            />
+            <h3>Denim Jacket</h3>
+            <p>$120</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.Sco2nAtnTdBkMSdt3216NAHaEJ?w=193&h=135&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Product 3"
+            />
+            <h3>Leather Bag</h3>
+            <p>$150</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.vMv_eP05YwbOhwcooe9IOAHaLH?w=193&h=290&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Product 4"
+            />
+            <h3>Summer Dress</h3>
+            <p>$80</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Native Threads. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

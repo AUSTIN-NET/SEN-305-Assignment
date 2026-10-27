@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Native Threads | Product Detail</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="logo"><a href="index.html">NATIVE THREADS</a></h1>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="product details.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="product-detail">
+        <figure class="product-image">
+          <img
+            src="https://www.bing.com/th/id/OIP.Et976WvFVVEuYrpY_XVb_AHaHa?w=193&h=193&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+            alt="Classic Tee"
+          />
+        </figure>
+
+        <article class="product-info">
+          <h2>Classic Tee</h2>
+          <p class="price">$40</p>
+          <p class="description">
+            A timeless cotton tee designed for comfort and style. Perfect for
+            everyday wear, crafted with sustainable fabrics.
+          </p>
+
+          <form class="purchase-form">
+            <label for="size">Size:</label>
+            <select id="size" name="size">
+              <option value="s">Small</option>
+              <option value="m">Medium</option>
+              <option value="l">Large</option>
+              <option value="xl">XL</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="1"
+            />
+
+            <button type="submit" class="btn">Add to Cart</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="related-products">
+        <h2>You May Also Like</h2>
+        <div class="product-grid">
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.KqfxkZNXZmQ1d76R146ljwHaGh?w=193&h=170&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Denim Jacket"
+            />
+            <h3>Denim Jacket</h3>
+            <p>$120</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.Sco2nAtnTdBkMSdt3216NAHaEJ?w=193&h=135&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Leather Bag"
+            />
+            <h3>Leather Bag</h3>
+            <p>$150</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+          <article class="product">
+            <img
+              src="https://www.bing.com/th/id/OIP.vMv_eP05YwbOhwcooe9IOAHaLH?w=193&h=290&c=8&rs=1&qlt=90&o=6&pid=ImgAns&rm=2"
+              alt="Summer Dress"
+            />
+            <h3>Summer Dress</h3>
+            <p>$80</p>
+            <a href="product.html" class="btn">View Details</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Native Threads. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

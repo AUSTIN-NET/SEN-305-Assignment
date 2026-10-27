@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Portal - City Health Hospital</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="portal-header">
+      <div class="header-container">
+        <div class="logo-area">
+          <span class="portal-logo" aria-hidden="true">🏥</span>
+          <h1>
+            City Health <span class="sr-only">Hospital</span> Patient Portal
+          </h1>
+        </div>
+        <div class="user-profile">
+          <span id="user-greeting">Welcome, <strong>Jane Doe</strong></span>
+          <button
+            class="btn-logout"
+            aria-label="Log out of your patient portal account"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="portal-container">
+      <nav class="portal-nav" aria-label="Main Portal Navigation">
+        <ul>
+          <li><a href="#dashboard" class="nav-item">Dashboard</a></li>
+          <li>
+            <a href="#appointments" class="nav-item">Book Appointments</a>
+          </li>
+          <li><a href="#lab-reports" class="nav-item">Lab Reports</a></li>
+          <li>
+            <a href="#medical-history" class="nav-item">Medical History</a>
+          </li>
+        </ul>
+      </nav>
+
+      <main id="main-content" class="portal-main" tabindex="-1">
+        <div id="dashboard" class="portal-view">
+          <header class="content-header">
+            <h2>Patient Dashboard</h2>
+            <p class="subtitle">Welcome to your central health hub.</p>
+          </header>
+
+          <div class="portal-card">
+            <h3>Quick Snapshot</h3>
+            <p>
+              You have <strong>2 ready lab reports</strong> waiting for review.
+            </p>
+            <p style="margin-top: 0.5rem">
+              Your current active prescriptions include
+              <strong>Lisinopril</strong> and <strong>Cetirizine</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div id="appointments" class="portal-view">
+          <header class="content-header">
+            <h2>Book Appointments</h2>
+            <p class="subtitle">
+              Schedule a diagnostic slot or consult with your care providers.
+            </p>
+          </header>
+
+          <section class="portal-card" aria-labelledby="form-heading">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">📅</span>
+              <h3 id="form-heading">Appointment Request Form</h3>
+            </div>
+            <form class="appointment-form" action="#" method="POST">
+              <div class="form-group">
+                <label for="department"
+                  >Medical Department
+                  <span class="required" aria-hidden="true">*</span></label
+                >
+                <select
+                  id="department"
+                  name="department"
+                  required
+                  aria-required="true"
+                >
+                  <option value="">-- Please select a specialty --</option>
+                  <option value="cardiology">Cardiology</option>
+                  <option value="general">General Medicine</option>
+                  <option value="pediatrics">Pediatrics</option>
+                  <option value="orthopedics">Orthopedics</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="app-date"
+                  >Preferred Date
+                  <span class="required" aria-hidden="true">*</span></label
+                >
+                <input
+                  type="date"
+                  id="app-date"
+                  name="app-date"
+                  required
+                  aria-required="true"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="app-time"
+                  >Preferred Time
+                  <span class="required" aria-hidden="true">*</span></label
+                >
+                <select
+                  id="app-time"
+                  name="app-time"
+                  required
+                  aria-required="true"
+                >
+                  <option value="">-- Select a time window --</option>
+                  <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                  <option value="afternoon">
+                    Afternoon (12:00 PM - 4:00 PM)
+                  </option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Schedule Appointment
+              </button>
+            </form>
+          </section>
+        </div>
+
+        <div id="lab-reports" class="portal-view">
+          <header class="content-header">
+            <h2>Diagnostic Lab Reports</h2>
+            <p class="subtitle">
+              Review official lab printouts generated by hospital staff
+              securely.
+            </p>
+          </header>
+
+          <section class="portal-card" aria-labelledby="reports-heading">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">🔬</span>
+              <h3 id="reports-heading">Recent Panels</h3>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Test / Panel Name</th>
+                    <th scope="col">Date Ordered</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Complete Blood Count (CBC)</td>
+                    <td>Oct 15, 2026</td>
+                    <td><span class="badge badge-success">Ready</span></td>
+                    <td>
+                      <a
+                        href="#"
+                        class="table-link"
+                        aria-label="Download Complete Blood Count Report from October 15, 2026"
+                        >Download PDF</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Lipid Panel Screening</td>
+                    <td>Oct 14, 2026</td>
+                    <td><span class="badge badge-success">Ready</span></td>
+                    <td>
+                      <a
+                        href="#"
+                        class="table-link"
+                        aria-label="Download Lipid Panel Screening Report from October 14, 2026"
+                        >Download PDF</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Thyroid Panel (TSH)</td>
+                    <td>Oct 26, 2026</td>
+                    <td>
+                      <span class="badge badge-pending">In Progress</span>
+                    </td>
+                    <td>
+                      <span class="text-muted" aria-hidden="true">—</span
+                      ><span class="sr-only">No actions available yet</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div id="medical-history" class="portal-view">
+          <header class="content-header">
+            <h2>Active Medical History</h2>
+            <p class="subtitle">
+              A certified timeline log detailing chronic conditions, verified
+              records, and baseline metrics.
+            </p>
+          </header>
+
+          <section class="portal-card" aria-labelledby="history-heading">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">📋</span>
+              <h3 id="history-heading">Patient Health Summary</h3>
+            </div>
+
+            <div class="history-grid">
+              <article class="history-item">
+                <h4>Diagnoses & Conditions</h4>
+                <ul>
+                  <li>Essential Hypertension (Managed)</li>
+                  <li>Seasonal Allergic Rhinitis</li>
+                </ul>
+              </article>
+
+              <article class="history-item">
+                <h4>Current Prescriptions</h4>
+                <ul>
+                  <li>
+                    Lisinopril 10mg —
+                    <span class="text-muted">Take 1 daily</span>
+                  </li>
+                  <li>
+                    Cetirizine 10mg —
+                    <span class="text-muted">Take 1 nightly as needed</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="history-item">
+                <h4>Known Allergies</h4>
+                <ul>
+                  <li class="allergy-alert">
+                    Amoxicillin
+                    <span class="sr-only">(Severe reaction risk)</span>
+                  </li>
+                  <li>Tree Pollen</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <footer class="portal-footer">
+      <p>
+        &copy; 2026 City Health Hospital Systems. Secure Patient Connection.
+      </p>
+    </footer>
+  </body>
+</html>
